@@ -1,34 +1,3 @@
-
-
-import express from "express";
-import {
-  registerUser,
-  loginUser,
-  getAllUsers,
-  getSingleUser,
-  createUser,
-  updateUser,
-  deleteUser,
-} from "../controllers/userController.js";
-import { protect } from "../middlewares/authMiddleware.js";
-
-const router = express.Router();
-
-// Public routes
-router.post("/register", registerUser);
-router.post("/login", loginUser);
-
-// Protected routes
-router.get("/users", protect, getAllUsers);
-router.get("/users/:id", protect, getSingleUser);
-router.post("/users", protect, createUser);
-router.put("/users/:id", protect, updateUser);
-router.delete("/users/:id", protect, deleteUser);
-
-export default router;
-
-
-/*
 import express from "express";
 import {
   getAllUsers,
@@ -56,7 +25,7 @@ router.put("/users/:id", updateUser);
 router.delete("/users/:id", deleteUser);
 
 export default router;
-*/
+
 
 
 /*

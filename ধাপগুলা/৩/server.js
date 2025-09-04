@@ -5,7 +5,6 @@ import userRoutes from "./routes/userRoutes.js"; // User routes
 import cors from "cors";         // 2 CORS ম্যানেজ করার জন্য
 import { notFound, errorHandler } from "./middlewares/errorMiddleware.js"; // 👉3
 
-
 dotenv.config();
 connectDB(); 
 

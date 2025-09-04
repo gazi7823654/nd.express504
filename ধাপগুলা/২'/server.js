@@ -2,12 +2,9 @@ import express from "express"; // Express import
 import dotenv from "dotenv";     // .env ফাইলের জন্য
 import connectDB from "./config/db.js"; // DB কানেকশন
 import userRoutes from "./routes/userRoutes.js"; // User routes
-import cors from "cors";         // 2 CORS ম্যানেজ করার জন্য
-import { notFound, errorHandler } from "./middlewares/errorMiddleware.js"; // 👉3
-
-
+import cors from "cors";         // CORS ম্যানেজ করার জন্য
 dotenv.config();
-connectDB(); 
+connectDB(); // 👉 নতুন
 
 const app = express();
 app.use(express.json());              //  json ডেটা পার্স করার জন্য
@@ -25,12 +22,7 @@ app.get("/", (req, res) => {
 }); 
 
 // Routes
-app.use("/api/users", userRoutes); 
-
-//3 👉 Error Middleware গুলো সব রাউটের পরে বসাতে হবে
-app.use(notFound);
-app.use(errorHandler);
-
+app.use("/api/users", userRoutes); // 👉 নতুন
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
