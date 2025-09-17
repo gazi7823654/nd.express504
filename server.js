@@ -4,13 +4,16 @@ import connectDB from "./config/db.js"; // DB কানেকশন
 import userRoutes from "./routes/userRoutes.js"; // User routes
 import cors from "cors";         // 2 CORS ম্যানেজ করার জন্য
 import { notFound, errorHandler } from "./middlewares/errorMiddleware.js"; // 👉3
-
+import logger from "./middlewares/logger.js";   
 
 dotenv.config();
 connectDB(); 
 
 const app = express();
 app.use(express.json());              //  json ডেটা পার্স করার জন্য
+app.use(logger);              // 👉 নতুন (logger চালু)
+
+
 //2. CORS সেটআপ
 app.use(
   cors({
